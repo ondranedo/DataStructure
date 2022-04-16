@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "LL.h"
 
+using namespace ds;
+
 void LinkedList::printList_index()
 {
 	node* tmp = head;
@@ -126,15 +128,20 @@ void LinkedList::pop_index(int index)
 	delete tmpr;
 }
 
-
-
 void LinkedList::reverse()
 {
-	node* tmp = head;
-	for (; tmp != NULL; tmp = tmp->next)
+	node *replace, *save, *prev;
+	replace = head;
+	save = head;
+	prev = NULL;
+	while (replace != NULL)
 	{
-
+		save = replace->next;
+		replace->next = prev;
+		prev = replace;
+		replace = save;
 	}
+	head = prev;
 }
 
 int LinkedList::getSize()
