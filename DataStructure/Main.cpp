@@ -5,14 +5,14 @@
 
 int main(void)
 {	
-	ds::LinkedList ll;
-	
-	for (int i = 0; i < 10; i++)
-		ll.push_end(i);
+	ds::LinkedList l1;
 
-	ll.printList();
-	ll.reverse();
-	ll.printList();
+	for (int i = 0; i < 10; i++)
+		l1.push_end(i);
+
+	l1.printList(ds::printStyle::INDEX);
+	l1.printList();//ds::printStyle::REVERSED);
+
 	system("pause>nul");
 	return 0;
 }

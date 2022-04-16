@@ -3,30 +3,68 @@
 
 using namespace ds;
 
+/* - - - - - - tisk spojového seznamu - - - - - - */
 void LinkedList::printList_index()
 {
-	node* tmp = head;
+	node*tmp = head;
 	int counter;
-	std::cout << "INDEX\t" << "DATA" << std::endl;
+	std::cout << "HEAD->" << head << std::endl;
+	std::cout << "INDEX\t" << "DATA\t" << "&ADDRES\t\t\t"<< "->POINTING TO\t" << std::endl;
+
 	for (counter = 0; tmp != NULL; tmp = tmp->next, counter++)
 	{
-		std::cout << counter + 1 << "\t" << tmp->data << " " << std::endl;
+		std::cout << counter + 1 << "\t" << tmp->data << "\t" << tmp << "\t" << tmp->next << "\t" << std::endl;
 	}
+
 	std::cout << "~~~~~~~~~~~" << std::endl;
 }
 
+void LinkedList::printList_normal(node* t)
+{
+	if (t == NULL) { return; }
+	std::cout << t->data << " ";
+	printList_normal(t->next);
+}
+void LinkedList::printList_reversed(node* t)
+{
+	if (t == NULL) {return; }
+	printList_reversed(t->next);
+	std::cout << t->data << " ";
+
+}
+
+void LinkedList::printList(printStyle mode)
+{
+	
+	if(mode ==printStyle::BLANK)
+	{ 
+		std::cout << "BLANK" << std::endl;
+	}
+	if (mode == printStyle::INDEX)
+	{
+		printList_index();
+	}
+	if (mode == printStyle::NORMAL)
+	{
+		printList_normal(head);
+		std::cout << std::endl;
+	}
+	if (mode == printStyle::REVERSED)
+	{
+		printList_reversed(head);
+		std::cout << std::endl;
+	}
+	
+}
 void LinkedList::printList()
 {
-	node* tmp = head;
-	for ( ;tmp != NULL; tmp = tmp->next)
-	{
-		std::cout << tmp->data << " ";
-	}
-	std::cout << std::endl;
+	printList(printStyle::NORMAL);
 }
 
 
 
+
+/* - - - - - - pøidání na spojový seznam - - - - - - */
 void LinkedList::push_index(int index, int data)
 {
 	if (index <= 1){
@@ -88,6 +126,7 @@ void LinkedList::push_end(int data)
 
 
 
+/* - - - - - - smazání ze Spojovéhop seznamu - - - - - - */
 void LinkedList::pop_last()
 {
 	if (size <= 0)return;
@@ -110,6 +149,8 @@ void LinkedList::pop_first()
 void LinkedList::pop_index(int index)
 {
 	if (index > size) return;
+
+
 	if (index <= 1)
 	{
 		pop_first();
@@ -128,6 +169,10 @@ void LinkedList::pop_index(int index)
 	delete tmpr;
 }
 
+
+
+
+/* - - - - - - algoritmi - - - - - - */
 void LinkedList::reverse()
 {
 	node *replace, *save, *prev;
@@ -144,11 +189,15 @@ void LinkedList::reverse()
 	head = prev;
 }
 
+
+/* - - - - - - funkce návratovách hodnot - - - - - - */
 int LinkedList::getSize()
 {
 	return size;
 }
 
+
+/* - - - - - - Konstruktory / Dekonstruktory - - - - - -*/
 LinkedList::LinkedList()
 {
 	head = NULL;
