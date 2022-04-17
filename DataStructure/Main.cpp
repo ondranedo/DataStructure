@@ -5,14 +5,45 @@
 
 int main(void)
 {	
-	ds::LinkedList l1;
+	ds::LinkedList a;
+	long long usr;
+	int log;
+	std::cout << "Zadejte lib cislo: ";
+	std::cin >> usr;
 
-	for (int i = 0; i < 10; i++)
-		l1.push_end(i);
+	for (long long i = 0; i < usr; i++)
+		a.push_end(i+1);
+while (true) {
+	system("cls");
+	log = 0;
+	P("Zvolte moznost co chcete udelat: ");
+	P("1. vypsat pole dlouze");
+	P("2. vypsat pole");
+	P("3. otocit pole");
+	P("4. zjistit velikost pole");
+	P("5. konec");
+	std::cout << ">>> ";
+	std::cin >> log;
 
-	l1.printList(ds::printStyle::INDEX);
-	l1.printList();//ds::printStyle::REVERSED);
-
-	system("pause>nul");
-	return 0;
+		switch (log)
+		{
+		case 1:
+			a.printList(ds::printStyle::INDEX);
+			system("pause>nul");
+			break;
+		case 2:
+			a.printList();
+			system("pause>nul");
+			break;
+		case 3:
+			a.reverse();
+			break;
+		case 4:
+			P(a.getSize());
+			system("pause>nul");
+			break;
+		case 5:
+			return 0;
+		}
+	}
 }
