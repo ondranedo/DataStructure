@@ -1,16 +1,16 @@
 #include "pch.h"
-#include "LL.h"
+#include "LinkedList.h"
 
 using namespace ds;
 
 /* - - - - - - tisk spojového seznamu - - - - - - */
-void LinkedList::printList_index()const
+void SingleLinkedList::printList_index()const
 {
 
-	node*tmp = head;
+	node* tmp = head;
 	unsigned long long counter;
 	std::cout << "HEAD->" << head << std::endl;
-	std::cout << "INDEX\t" << "DATA\t" << "&ADDRES\t\t\t"<< "->POINTING TO\t" << std::endl;
+	std::cout << "INDEX\t" << "DATA\t" << "&ADDRES\t\t\t" << "->POINTING TO\t" << std::endl;
 
 	for (counter = 0; tmp != NULL; tmp = tmp->next, counter++)
 	{
@@ -19,25 +19,22 @@ void LinkedList::printList_index()const
 
 	std::cout << "~~~~~~~~~~~" << std::endl;
 }
-
-void LinkedList::printList_iter() const
+void SingleLinkedList::printList_iter() const
 {
 	node* tmp = head;
 	unsigned long long counter;
 	for (counter = 0; tmp != NULL; tmp = tmp->next, counter++)
-	{ 
+	{
 		std::cout << tmp->data << " ";
 	}
 }
-
-void LinkedList::printList_recursion(node* t) const
+void SingleLinkedList::printList_recursion(node* t) const
 {
 	if (t == NULL) { return; }
 	std::cout << t->data << " ";
 	printList_recursion(t->next);
 }
-
-void LinkedList::printList(printStyle mode) const
+void SingleLinkedList::printList(printStyle mode) const
 {
 	switch (mode)
 	{
@@ -55,7 +52,7 @@ void LinkedList::printList(printStyle mode) const
 		break;
 	}
 }
-void LinkedList::printList() const
+void SingleLinkedList::printList() const
 {
 	printList(printStyle::NORMAL);
 }
@@ -63,18 +60,18 @@ void LinkedList::printList() const
 
 
 /* - - - - - - pøidání na spojový seznam - - - - - - */
-void LinkedList::push_index(int index, int data)
+void SingleLinkedList::push_index(int index, int data)
 {
-	if (index <= 1){
+	if (index <= 1) {
 		push_front(data);
 		return;
 	}
-	if (index >= size + 2) return; 
-	
+	if (index >= size + 2) return;
+
 	size++;
 	node* tmp = head;
 
-	for (int i = 0; i < index - 2; i++) tmp = tmp->next;	
+	for (int i = 0; i < index - 2; i++) tmp = tmp->next;
 
 	node* add = new node;
 	add->data = data;
@@ -82,8 +79,7 @@ void LinkedList::push_index(int index, int data)
 	add->next = tmp->next;
 	tmp->next = add;
 }
-
-void LinkedList::push_front(int data)
+void SingleLinkedList::push_front(int data)
 {
 	size++;
 
@@ -101,8 +97,7 @@ void LinkedList::push_front(int data)
 	tmp->data = data;
 	head = tmp;
 }
-
-void LinkedList::push_end(int data)
+void SingleLinkedList::push_end(int data)
 {
 	size++;
 	if (head == NULL)
@@ -113,11 +108,11 @@ void LinkedList::push_end(int data)
 		head = tmp;
 		return;
 	}
-	
+
 	node* tmp = head;
-	while(tmp->next!=NULL)
+	while (tmp->next != NULL)
 		tmp = tmp->next;
-	
+
 	tmp->next = new node;
 	tmp = tmp->next;
 	tmp->data = data;
@@ -125,7 +120,7 @@ void LinkedList::push_end(int data)
 }
 
 /* - - - - - - smazání ze Spojovéhop seznamu - - - - - - */
-void LinkedList::pop_last()
+void SingleLinkedList::pop_last()
 {
 	if (size <= 0)return;
 	size--;
@@ -134,8 +129,7 @@ void LinkedList::pop_last()
 	tmp->next = NULL;
 	delete tmp->next;
 }
-
-void LinkedList::pop_first()
+void SingleLinkedList::pop_first()
 {
 	if (size <= 0)return;
 	size--;
@@ -143,8 +137,7 @@ void LinkedList::pop_first()
 	head = tmp->next;
 	delete tmp;
 }
-
-void LinkedList::pop_index(int index)
+void SingleLinkedList::pop_index(int index)
 {
 	if (index > size) return;
 
@@ -154,7 +147,7 @@ void LinkedList::pop_index(int index)
 		pop_first();
 		return;
 	}
-	
+
 	size--;
 	node* tmpl = head;
 
@@ -169,24 +162,23 @@ void LinkedList::pop_index(int index)
 
 /* - - - - - - algoritmy - - - - - - */
 //* - - - - - - obrati poradi prvku - - - - - - */
-void LinkedList::reverse(sortStyle mode)
+void SingleLinkedList::reverse(reverseStyle mode)
 {
 	switch (mode)
 	{
-	case sortStyle::RECURSION:
+	case reverseStyle::RECURSION:
 		reverse_recursion(head);
 		break;
-	case sortStyle::ITERATION:
+	case reverseStyle::ITERATION:
 		reverse_iter();
 		break;
 	}
 }
-void LinkedList::reverse()
+void SingleLinkedList::reverse()
 {
-	reverse(sortStyle::NORMAL);
+	reverse(reverseStyle::NORMAL);
 }
-
-void LinkedList::reverse_recursion(node* tmp)
+void SingleLinkedList::reverse_recursion(node* tmp)
 {
 	if (tmp->next == NULL) { head = tmp; return; }
 	reverse_recursion(tmp->next);
@@ -194,8 +186,7 @@ void LinkedList::reverse_recursion(node* tmp)
 	q->next = tmp;
 	tmp->next = NULL;
 }
-
-void ds::LinkedList::reverse_iter()
+void SingleLinkedList::reverse_iter()
 {
 	node* prev, * save, * replace;
 	replace = head;
@@ -212,13 +203,12 @@ void ds::LinkedList::reverse_iter()
 }
 
 /* - - - - - - funkce návratovách hodnot - - - - - - */
-unsigned long long LinkedList::getSize() const
+unsigned long long SingleLinkedList::getSize() const
 {
 	return size;
 }
-
 // vrati index na kterem nalezi hodnota
-int ds::LinkedList::locate(int find) const
+int SingleLinkedList::locate(int find) const
 {
 	node* tmp = head;
 	int i = 0;
@@ -230,15 +220,13 @@ int ds::LinkedList::locate(int find) const
 }
 
 /* - - - - - - Konstruktory / Dekonstruktory - - - - - - */
-LinkedList::LinkedList()
+SingleLinkedList::SingleLinkedList()
 {
 	head = NULL;
 	size = 0;
 }
-
-LinkedList::~LinkedList()
+SingleLinkedList::~SingleLinkedList()
 {
-	size = 0;
 	head->data = NULL;
 	head->next = nullptr;
 	delete head;

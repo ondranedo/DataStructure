@@ -26,7 +26,10 @@
     <ClCompile Include="Main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="LL.cpp">
+    <ClCompile Include="SingleLinkedList.cpp">
+      <Filter>Sources\CLASSES\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
       <Filter>Sources\CLASSES\LinkedList</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,7 +37,7 @@
     <ClInclude Include="pch.h">
       <Filter>Sources\PCH</Filter>
     </ClInclude>
-    <ClInclude Include="LL.h">
+    <ClInclude Include="LinkedList.h">
       <Filter>Sources\CLASSES\LinkedList</Filter>
     </ClInclude>
   </ItemGroup>
