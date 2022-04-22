@@ -7,11 +7,10 @@
 *				- LL = LinkedList (spojový seznam)
 */
 
-
 namespace ds {
 
-	///typy vypisu na obrazovku
-	//typy format vypisu
+	///typy výpisu na obrazovku
+	//typy formát vypisu
 	enum class printStyle : int
 	{
 		INDEX,					//indexovaný výpis	
@@ -19,15 +18,16 @@ namespace ds {
 		RECURSION,				//normalni vypis rekurzi
 		NORMAL = ITERATION,		//normální výpis			
 	};
-	//typy a zpusob serayeni
+
+	//typy a vypisu seøazeni
 	enum class reverseStyle {
 		ITERATION,				//serazeni pole iteraci
 		RECURSION,				//serazeni pole rekurzi
 		NORMAL = ITERATION,		//normalni serazeni
 	};
 
-	///tridy
-	//spojovy seznam s pouze dalsi adresou
+	///tøídy
+	//spojový seznam s pouze dalši adresou
 	class SingleLinkedList
 	{
 		/*  - - - - - -private primitivní datové struktury - - - - - - */
@@ -52,8 +52,8 @@ namespace ds {
 		SingleLinkedList();
 		~SingleLinkedList();
 
-		void printList(printStyle mode) const;	//vypise LL dle zvoleneho modu
-		void printList() const;					//vypise LL standartnì STANDARD
+		void printList(printStyle mode) const;	//vypíše LL dle zvoleneho módu
+		void printList() const;					//vypíše LL standartnì STANDARD
 		void push_end(int data);				//vloží na konec LL hodnotu
 		void push_front(int data);				//vloží na zaèátek LL hodnotu
 		void push_index(int index, int data);	//vloží na nThou pozici LL hodnotu
@@ -63,7 +63,7 @@ namespace ds {
 		void pop_index(int index);				//odstraní hodnotu LL na nThe pozici
 		void reverse(reverseStyle mode);		//prohodi všechny ukazatele LL => obrátí LL
 		void reverse();							//prohodi všechny ukazatele LL => obrátí LL - NORMAL
-		int locate(int find) const;				//vyhleda v LL hodnotu
+		int locate(int find) const;				//vyhledá v LL hodnotu
 
 
 
@@ -72,15 +72,15 @@ namespace ds {
 		void printList_iter() const;					//vypíše bez indexu iteraci 
 		void printList_index() const;					//vypíše s indexem normálnì	
 		void printList_recursion(node* t) const;		//vypíše bez indexu rekurzivne
-		void reverse_recursion(node* tmp);				//obrati LL pres rekurzy
-		void reverse_iter();							//obrati LL pres iteraci
+		void reverse_recursion(node* tmp);				//obrátí LL pres rekurzy
+		void reverse_iter();							//obrátí LL pres iteraci
 	};
 
-	//spojovy seznam se dvema adresama
+	//spojový seznam se dvìma adresami
 	class LinkedList
 	{
 	private:
-		/* - - - - - - dalsi prvky - - - - - - */
+		/* - - - - - - další prvky - - - - - - */
 		struct node {
 			int data;
 			node* next;
@@ -88,7 +88,7 @@ namespace ds {
 		};
 
 
-		/* - - - - - - promenne - - - - - - */
+		/* - - - - - - promìnné - - - - - - */
 		size_t size;
 		node* head;
 		node* tail;
@@ -96,35 +96,35 @@ namespace ds {
 
 	public:
 		///public metodu
-		//prida hodnotu na zacatek
+		//pøidá hodnotu na zaèátek
 		void push_front(int data);
-/*
-		//prida hodnotu na konec
-		void push_end(DATA_TYPE data);
 
-		//prida hodnotu na urcity index
-		void push_index(DATA_TYPE data, size_t index);
+		//pøidá hodnotu na konec
+		void push_end(int data);
 
-		//smaze prvni hodnotu
-		void pop_first();				
+		//pøidá hodnotu na urèitý index
+		void push_index(size_t index, int data);
+		/*
+				//smaže první hodnotu
+				void pop_first();
 
-		//smaze posledni hodnotu
-		void pop_last(); 
+				//smaže poslední hodnotu
+				void pop_last();
 
-		//smaze hodnotu z urciteho indexu 
-		void pop_index(size_t index);
-		
-		//vrati hodnotu velikosti pole
+				//smaže hodnotu z urèitého indexu
+				void pop_index(size_t index);
+		*/
+		//vráti hodnotu velikosti pole
 		size_t getSize() const;
-*/
+		
+		//vztiskne LL na jeden øádek
+		void printList() const;
 
 		///konstruktory dekonstruktory
 		LinkedList();
 		~LinkedList();
 	private:
 	};
-
-
 }
 
 

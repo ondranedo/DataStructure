@@ -7,10 +7,10 @@ using namespace ds;
 void SingleLinkedList::printList_index()const
 {
 
-	node*tmp = head;
+	node* tmp = head;
 	unsigned long long counter;
 	std::cout << "HEAD->" << head << std::endl;
-	std::cout << "INDEX\t" << "DATA\t" << "&ADDRES\t\t\t"<< "->POINTING TO\t" << std::endl;
+	std::cout << "INDEX\t" << "DATA\t" << "&ADDRES\t\t\t" << "->POINTING TO\t" << std::endl;
 
 	for (counter = 0; tmp != NULL; tmp = tmp->next, counter++)
 	{
@@ -24,7 +24,7 @@ void SingleLinkedList::printList_iter() const
 	node* tmp = head;
 	unsigned long long counter;
 	for (counter = 0; tmp != NULL; tmp = tmp->next, counter++)
-	{ 
+	{
 		std::cout << tmp->data << " ";
 	}
 }
@@ -62,16 +62,16 @@ void SingleLinkedList::printList() const
 /* - - - - - - pøidání na spojový seznam - - - - - - */
 void SingleLinkedList::push_index(int index, int data)
 {
-	if (index <= 1){
+	if (index <= 1) {
 		push_front(data);
 		return;
 	}
-	if (index >= size + 2) return; 
-	
+	if (index >= size + 2) return;
+
 	size++;
 	node* tmp = head;
 
-	for (int i = 0; i < index - 2; i++) tmp = tmp->next;	
+	for (int i = 0; i < index - 2; i++) tmp = tmp->next;
 
 	node* add = new node;
 	add->data = data;
@@ -108,11 +108,11 @@ void SingleLinkedList::push_end(int data)
 		head = tmp;
 		return;
 	}
-	
+
 	node* tmp = head;
-	while(tmp->next!=NULL)
+	while (tmp->next != NULL)
 		tmp = tmp->next;
-	
+
 	tmp->next = new node;
 	tmp = tmp->next;
 	tmp->data = data;
@@ -147,7 +147,7 @@ void SingleLinkedList::pop_index(int index)
 		pop_first();
 		return;
 	}
-	
+
 	size--;
 	node* tmpl = head;
 
@@ -227,7 +227,6 @@ SingleLinkedList::SingleLinkedList()
 }
 SingleLinkedList::~SingleLinkedList()
 {
-	size = 0;
 	head->data = NULL;
 	head->next = nullptr;
 	delete head;
