@@ -7,10 +7,9 @@
 *				- LL = LinkedList (spojový seznam)
 */
 namespace ds {
-	
-/* - - - - - - Enumerace a další - - - - - -*/
 
 	///typy vypisu na obrazovku
+	//typy format vypisu
 	enum class printStyle : int
 	{
 		INDEX,					//indexovaný výpis	
@@ -18,14 +17,16 @@ namespace ds {
 		RECURSION,				//normalni vypis rekurzi
 		NORMAL = ITERATION,		//normální výpis			
 	};
-	enum class sortStyle {
+	//typy a zpusob serayeni
+	enum class reverseStyle {
 		ITERATION,				//serazeni pole iteraci
 		RECURSION,				//serazeni pole rekurzi
 		NORMAL = ITERATION,		//normalni serazeni
 	};
 
-/* - - - - - - tøídy  - - - - - - */
-	class LinkedList
+	///tridy
+	//
+	class SingleLinkedList
 	{
 		/*  - - - - - -private primitivní datové struktury - - - - - - */
 		/*
@@ -46,8 +47,8 @@ namespace ds {
 
 		/* - - - - - - public metody - - - - - - */
 	public:
-		LinkedList();
-		~LinkedList();
+		SingleLinkedList();
+		~SingleLinkedList();
 
 		void printList(printStyle mode) const;	//vypise LL dle zvoleneho modu
 		void printList() const;					//vypise LL standartnì STANDARD
@@ -58,7 +59,7 @@ namespace ds {
 		void pop_last();						//odstraní poslední hodnotu LL
 		void pop_first();						//odstraní první hodnotu LL
 		void pop_index(int index);				//odstraní hodnotu LL na nThe pozici
-		void reverse(sortStyle mode);		//prohodi všechny ukazatele LL => obrátí LL
+		void reverse(reverseStyle mode);		//prohodi všechny ukazatele LL => obrátí LL
 		void reverse();							//prohodi všechny ukazatele LL => obrátí LL - NORMAL
 		int locate(int find) const;				//vyhleda v LL hodnotu
 
@@ -71,6 +72,15 @@ namespace ds {
 		void printList_recursion(node* t) const;				//vypíše bez indexu rekurzivne
 		void reverse_recursion(node* tmp);				//obrati LL pres rekurzy
 		void reverse_iter();							//obrati LL pres iteraci
+	}
+
+
+
+	class DoublyLinkedList
+	{
+	public:
+		DoublyLinkedList();
+		~DoublyLinkedList();
 	};
 }
 
