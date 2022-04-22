@@ -6,6 +6,8 @@
 *	obsah: linked list
 *				- LL = LinkedList (spojový seznam)
 */
+
+
 namespace ds {
 
 	///typy vypisu na obrazovku
@@ -25,7 +27,7 @@ namespace ds {
 	};
 
 	///tridy
-	//
+	//spojovy seznam s pouze dalsi adresou
 	class SingleLinkedList
 	{
 		/*  - - - - - -private primitivní datové struktury - - - - - - */
@@ -55,7 +57,7 @@ namespace ds {
 		void push_end(int data);				//vloží na konec LL hodnotu
 		void push_front(int data);				//vloží na zaèátek LL hodnotu
 		void push_index(int index, int data);	//vloží na nThou pozici LL hodnotu
-		unsigned long long getSize() const;					//vrátí velikost (poèet prvkù) LL
+		unsigned long long getSize() const;		//vrátí velikost (poèet prvkù) LL
 		void pop_last();						//odstraní poslední hodnotu LL
 		void pop_first();						//odstraní první hodnotu LL
 		void pop_index(int index);				//odstraní hodnotu LL na nThe pozici
@@ -67,21 +69,61 @@ namespace ds {
 
 		/* - - - - - -private metody - - - - - - */
 	private:
-		void printList_iter() const;				//vypíše bez indexu iteraci 
+		void printList_iter() const;					//vypíše bez indexu iteraci 
 		void printList_index() const;					//vypíše s indexem normálnì	
-		void printList_recursion(node* t) const;				//vypíše bez indexu rekurzivne
+		void printList_recursion(node* t) const;		//vypíše bez indexu rekurzivne
 		void reverse_recursion(node* tmp);				//obrati LL pres rekurzy
 		void reverse_iter();							//obrati LL pres iteraci
-	}
-
-
-
-	class DoublyLinkedList
-	{
-	public:
-		DoublyLinkedList();
-		~DoublyLinkedList();
 	};
+
+	//spojovy seznam se dvema adresama
+	class LinkedList
+	{
+	private:
+		/* - - - - - - dalsi prvky - - - - - - */
+		struct node {
+			int data;
+			node* next;
+			node* prev;
+		};
+
+
+		/* - - - - - - promenne - - - - - - */
+		size_t a;
+		node* head;
+		node* tail;
+
+
+	public:
+		///public metodu
+		//prida hodnotu na zacatek
+		void push_front();		
+
+		//prida hodnotu na konec
+		void push_end();	
+
+		//prida hodnotu na urcity index
+		void push_index(size_t index);	
+
+		//smaze prvni hodnotu
+		void pop_first();				
+
+		//smaze posledni hodnotu
+		void pop_last(); 
+
+		//smaze hodnotu z urciteho indexu 
+		void pop_index(size_t index);
+		
+		//vrati hodnotu velikosti pole
+		size_t getSize() const;
+
+		///konstruktory dekonstruktory
+		LinkedList();
+		~LinkedList();
+	private:
+	};
+
+
 }
 
 

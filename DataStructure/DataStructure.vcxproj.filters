@@ -29,7 +29,7 @@
     <ClCompile Include="SingleLinkedList.cpp">
       <Filter>Sources\CLASSES\LinkedList</Filter>
     </ClCompile>
-    <ClCompile Include="DoublyLinkedList.cpp">
+    <ClCompile Include="LinkedList.cpp">
       <Filter>Sources\CLASSES\LinkedList</Filter>
     </ClCompile>
   </ItemGroup>
