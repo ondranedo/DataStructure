@@ -166,17 +166,17 @@ void SingleLinkedList::reverse(reverseStyle mode)
 {
 	switch (mode)
 	{
-	case sortStyle::RECURSION:
+	case reverseStyle::RECURSION:
 		reverse_recursion(head);
 		break;
-	case sortStyle::ITERATION:
+	case reverseStyle::ITERATION:
 		reverse_iter();
 		break;
 	}
 }
 void SingleLinkedList::reverse()
 {
-	reverse(sortStyle::NORMAL);
+	reverse(reverseStyle::NORMAL);
 }
 void SingleLinkedList::reverse_recursion(node* tmp)
 {

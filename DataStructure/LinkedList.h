@@ -89,7 +89,7 @@ namespace ds {
 
 
 		/* - - - - - - promenne - - - - - - */
-		size_t a;
+		size_t size;
 		node* head;
 		node* tail;
 
@@ -97,13 +97,13 @@ namespace ds {
 	public:
 		///public metodu
 		//prida hodnotu na zacatek
-		void push_front();		
-
+		void push_front(int data);
+/*
 		//prida hodnotu na konec
-		void push_end();	
+		void push_end(DATA_TYPE data);
 
 		//prida hodnotu na urcity index
-		void push_index(size_t index);	
+		void push_index(DATA_TYPE data, size_t index);
 
 		//smaze prvni hodnotu
 		void pop_first();				
@@ -116,6 +116,7 @@ namespace ds {
 		
 		//vrati hodnotu velikosti pole
 		size_t getSize() const;
+*/
 
 		///konstruktory dekonstruktory
 		LinkedList();
