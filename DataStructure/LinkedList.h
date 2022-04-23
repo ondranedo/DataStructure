@@ -104,16 +104,16 @@ namespace ds {
 
 		//pøidá hodnotu na urèitý index
 		void push_index(size_t index, int data);
-		/*
-				//smaže první hodnotu
-				void pop_first();
-
-				//smaže poslední hodnotu
-				void pop_last();
-
-				//smaže hodnotu z urèitého indexu
-				void pop_index(size_t index);
-		*/
+		
+		//smaže první hodnotu
+		void pop_first();
+		
+		//smaže poslední hodnotu
+		void pop_last();
+		
+		//smaže hodnotu z urèitého indexu
+		void pop_index(size_t index);
+		
 		//vráti hodnotu velikosti pole
 		size_t getSize() const;
 		
