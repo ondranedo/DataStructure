@@ -73,15 +73,11 @@ void LinkedList::push_end(int data)
 }
 void LinkedList::push_index(size_t index, int data)
 {
-	node* tmp = nullptr;
-	node* _new = nullptr;
-
 	if (index > size+1 || index < 0)
 	{
-		std::cout << "@push_index index errot" << std::endl;
+		std::cout << "@push_index index error" << std::endl;
 		return;
 	}
-
 	if (head == NULL)
 	{
 		tail = new node;
@@ -93,11 +89,16 @@ void LinkedList::push_index(size_t index, int data)
 		return;
 	}
 
+	if (index == size) { push_end(data); return; }
+
+	node* tmp = nullptr;
+	node* _new = nullptr;
+
 	//potrebujeme pocitat od zacatku
-	if (index > size / 2)
+	if (index < size / 2)
 	{
 		tmp = head;
-		for (size_t i = 1; i != index; i++)
+		for (size_t i = 1; i < index-1; i++)
 			tmp = tmp->next;
 		_new = new node;
 		_new->data = data;
@@ -105,18 +106,19 @@ void LinkedList::push_index(size_t index, int data)
 		_new->next = tmp->next;
 		_new->prev = tmp;
 		tmp->next = _new;
-		tmp = _new;
+		_new->next->prev = _new;
 
 		size++;
 		return;
 	}
 
 	//potrebujeme pocitat od konce
-	if (index < size / 2)
+	if (index >= size / 2)
 	{
 		tmp = tail;
-		for (size_t i = size; i != index; i--)
+		for (size_t i = size; i > index; i--)
 			tmp = tmp->prev;
+
 		_new = new node;
 		_new->data = data;
 
@@ -125,11 +127,9 @@ void LinkedList::push_index(size_t index, int data)
 		tmp->prev->next = _new;
 		tmp->prev = _new;
 
+
 		size++;
 		return;
 	}
 
-
-
-	std::cout << "hodne divnz bug v @push_index" << std::endl;
 }
