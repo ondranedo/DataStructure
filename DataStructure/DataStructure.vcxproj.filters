@@ -18,6 +18,9 @@
     <Filter Include="Sources\CLASSES\LinkedList">
       <UniqueIdentifier>{af7e3d2c-e04b-46ec-8ebd-6550d76b92fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\CLASSES\Stack">
+      <UniqueIdentifier>{67449079-6c0a-4040-9da3-6bf4ebbbcdea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -26,11 +29,14 @@
     <ClCompile Include="Main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="SingleLinkedList.cpp">
+    <ClCompile Include="SinglyLinkedList.cpp">
       <Filter>Sources\CLASSES\LinkedList</Filter>
     </ClCompile>
     <ClCompile Include="LinkedList.cpp">
       <Filter>Sources\CLASSES\LinkedList</Filter>
+    </ClCompile>
+    <ClCompile Include="Stack.cpp">
+      <Filter>Sources\CLASSES\Stack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +45,9 @@
     </ClInclude>
     <ClInclude Include="LinkedList.h">
       <Filter>Sources\CLASSES\LinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Sources\CLASSES\Stack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
