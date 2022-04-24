@@ -1,143 +1,141 @@
 #pragma once
 
 /*
-*	autor: Ondøej Nedojedlý
-*	datum: y2022m04d15 (prvni upravy - git init commit)
-*/
+ *	autor: Ondï¿½ej Nedojedlï¿½
+ *	datum: y2022m04d15 (prvni upravy - git init commit)
+ */
 
-namespace ds {
-	
-	///tøídy
+namespace ds
+{
+
+	/// tï¿½ï¿½dy
 	/*
-		Spojový seznam obsahující data typu 'int'.
-		Adresu na dalsi node, pomale pridavani na konec, 
-		asymptotická složitost pro funkci push_end(), pro ohranièeni shora je N,
-		N(= poèet prvkù spojopvého seznamu)
-		avšak menší jedna node, na velikost jednoho ukazatele,
-		=> výhodnìjší pro menší payload(=data kromì ukazatelu na dalši node) 
-	 	node(= jeden prvek soubìzné pamìti...)
+		Spojovï¿½ seznam obsahujï¿½cï¿½ data typu 'int'.
+		Adresu na dalsi node, pomale pridavani na konec,
+		asymptotickï¿½ sloï¿½itost pro funkci push_end(), pro ohraniï¿½eni shora je N,
+		N(= poï¿½et prvkï¿½ spojopvï¿½ho seznamu)
+		avï¿½ak menï¿½ï¿½ jedna node, na velikost jednoho ukazatele,
+		=> vï¿½hodnï¿½jï¿½ï¿½ pro menï¿½ï¿½ payload(=data kromï¿½ ukazatelu na dalï¿½i node)
+		node(= jeden prvek soubï¿½znï¿½ pamï¿½ti...)
 	*/
 	class SinglyLinkedList
 	{
-		/*  - - - - - -private primitivní datové struktury - - - - - - */
+		/*  - - - - - -private primitivnï¿½ datovï¿½ struktury - - - - - - */
 		/*
-		*	struktura kde jedna èást pamìti pøedstavuje
-		*	jeden tzv. "node", což je jeden prvek
-		*	spojového seznamu
-		*/
-		struct node {
+		 *	struktura kde jedna ï¿½ï¿½st pamï¿½ti pï¿½edstavuje
+		 *	jeden tzv. "node", coï¿½ je jeden prvek
+		 *	spojovï¿½ho seznamu
+		 */
+		struct node
+		{
 			int data;
-			node* next;
+			node *next;
 		};
 
-		///typy výpisu na obrazovku
-		//typy formát vypisu
+		/// typy vï¿½pisu na obrazovku
+		// typy formï¿½t vypisu
 		enum class printStyle : int
 		{
-			INDEX,					//indexovaný výpis	
-			ITERATION,				//normlani vypis iteraci
-			RECURSION,				//normalni vypis rekurzi
-			NORMAL = ITERATION,		//normální výpis	
+			INDEX,				// indexovanï¿½ vï¿½pis
+			ITERATION,			// normlani vypis iteraci
+			RECURSION,			// normalni vypis rekurzi
+			NORMAL = ITERATION, // normï¿½lnï¿½ vï¿½pis
 		};
 
-		//typy a vypisu seøazeni
-		enum class reverseStyle {
-			ITERATION,				//serazeni pole iteraci
-			RECURSION,				//serazeni pole rekurzi
-			NORMAL = ITERATION,		//normalni serazeni
+		// typy a vypisu seï¿½azeni
+		enum class reverseStyle
+		{
+			ITERATION,			// serazeni pole iteraci
+			RECURSION,			// serazeni pole rekurzi
+			NORMAL = ITERATION, // normalni serazeni
 		};
 
-		/* - - - - - - private promìnné - - - - - - */
-		unsigned long long size;		//délka L
-		node* head;						//head linkedlist
-
+		/* - - - - - - private promï¿½nnï¿½ - - - - - - */
+		unsigned long long size; // dï¿½lka L
+		node *head;				 // head linkedlist
 
 		/* - - - - - - public metody - - - - - - */
 	public:
 		SinglyLinkedList();
 		~SinglyLinkedList();
 
-		void printList(printStyle mode) const;	//vypíše LL dle zvoleneho módu
-		void printList() const;					//vypíše LL standartnì STANDARD
-		void push_end(int data);				//vloží na konec LL hodnotu
-		void push_front(int data);				//vloží na zaèátek LL hodnotu
-		void push_index(int index, int data);	//vloží na nThou pozici LL hodnotu
-		unsigned long long getSize() const;		//vrátí velikost (poèet prvkù) LL
-		void pop_last();						//odstraní poslední hodnotu LL
-		void pop_first();						//odstraní první hodnotu LL
-		void pop_index(int index);				//odstraní hodnotu LL na nThe pozici
-		void reverse(reverseStyle mode);		//prohodi všechny ukazatele LL => obrátí LL
-		void reverse();							//prohodi všechny ukazatele LL => obrátí LL - NORMAL
-		int locate(int find) const;				//vyhledá v LL hodnotu
-
-
+		void printList(printStyle mode) const; // vypï¿½e LL dle zvoleneho mï¿½du
+		void printList() const;				   // vypï¿½e LL standartnï¿½ STANDARD
+		void push_end(int data);			   // vloï¿½ï¿½ na konec LL hodnotu
+		void push_front(int data);			   // vloï¿½ï¿½ na zaï¿½ï¿½tek LL hodnotu
+		void push_index(int index, int data);  // vloï¿½ï¿½ na nThou pozici LL hodnotu
+		unsigned long long getSize() const;	   // vrï¿½tï¿½ velikost (poï¿½et prvkï¿½) LL
+		void pop_last();					   // odstranï¿½ poslednï¿½ hodnotu LL
+		void pop_first();					   // odstranï¿½ prvnï¿½ hodnotu LL
+		void pop_index(int index);			   // odstranï¿½ hodnotu LL na nThe pozici
+		void reverse(reverseStyle mode);	   // prohodi vï¿½echny ukazatele LL => obrï¿½tï¿½ LL
+		void reverse();						   // prohodi vï¿½echny ukazatele LL => obrï¿½tï¿½ LL - NORMAL
+		int locate(int find) const;			   // vyhledï¿½ v LL hodnotu
 
 		/* - - - - - -private metody - - - - - - */
 	private:
-		void printList_iter() const;					//vypíše bez indexu iteraci 
-		void printList_index() const;					//vypíše s indexem normálnì	
-		void printList_recursion(node* t) const;		//vypíše bez indexu rekurzivne
-		void reverse_recursion(node* tmp);				//obrátí LL pres rekurzy
-		void reverse_iter();							//obrátí LL pres iteraci
+		void printList_iter() const;			 // vypï¿½e bez indexu iteraci
+		void printList_index() const;			 // vypï¿½e s indexem normï¿½lnï¿½
+		void printList_recursion(node *t) const; // vypï¿½e bez indexu rekurzivne
+		void reverse_recursion(node *tmp);		 // obrï¿½tï¿½ LL pres rekurzy
+		void reverse_iter();					 // obrï¿½tï¿½ LL pres iteraci
 	};
 
 	/*
-		Spojový seznam obsahující data typu 'int'.
-		Adresu na dalsi node, a node pøedchozí, 
-		asymptotická složitost pro funkci push_end(), pro ohranièeni shora je konstanta 1,
-		avšak vìtší jedna node o jeden ukazatel
+		Spojovï¿½ seznam obsahujï¿½cï¿½ data typu 'int'.
+		Adresu na dalsi node, a node pï¿½edchozï¿½,
+		asymptotickï¿½ sloï¿½itost pro funkci push_end(), pro ohraniï¿½eni shora je konstanta 1,
+		avï¿½ak vï¿½tï¿½ï¿½ jedna node o jeden ukazatel
 		[u 64b arch. pointer = 8B; u 32b arch. pointer = 4B]
-		=> výhodnìjší u vyšší velikost payloadu(=data kromì ukazatelu na dalši node) 
-		node(= jeden prvek soubìzné pamìti obsahující 2*node poniter a payload)
+		=> vï¿½hodnï¿½jï¿½ï¿½ u vyï¿½ï¿½ï¿½ velikost payloadu(=data kromï¿½ ukazatelu na dalï¿½i node)
+		node(= jeden prvek soubï¿½znï¿½ pamï¿½ti obsahujï¿½cï¿½ 2*node poniter a payload)
 	*/
 	class LinkedList
 	{
 	private:
-		/* - - - - - - další prvky - - - - - - */
-		struct node {
+		/* - - - - - - dalï¿½ï¿½ prvky - - - - - - */
+		struct node
+		{
 			int data;
-			node* next;
-			node* prev;
+			node *next;
+			node *prev;
 		};
 
-
-		/* - - - - - - promìnné - - - - - - */
+		/* - - - - - - promï¿½nnï¿½ - - - - - - */
 		size_t size;
-		node* head;
-		node* tail;
-
+		node *head;
+		node *tail;
 
 	public:
-		///public metodu
-		//pøidá hodnotu na zaèátek
+		/// public metodu
+		// pï¿½idï¿½ hodnotu na zaï¿½ï¿½tek
 		void push_front(int data);
 
-		//pøidá hodnotu na konec
+		// pï¿½idï¿½ hodnotu na konec
 		void push_end(int data);
 
-		//pøidá hodnotu na urèitý index
+		// pï¿½idï¿½ hodnotu na urï¿½itï¿½ index
 		void push_index(size_t index, int data);
-		
-		//smaže první hodnotu
+
+		// smaï¿½e prvnï¿½ hodnotu
 		void pop_first();
-		
-		//smaže poslední hodnotu
+
+		// smaï¿½e poslednï¿½ hodnotu
 		void pop_last();
-		
-		//smaže hodnotu z urèitého indexu
+
+		// smaï¿½e hodnotu z urï¿½itï¿½ho indexu
 		void pop_index(size_t index);
-		
-		//vráti hodnotu velikosti pole
+
+		// vrï¿½ti hodnotu velikosti pole
 		size_t getSize() const;
-		
-		//vztiskne LL na jeden øádek
+
+		// vztiskne LL na jeden ï¿½ï¿½dek
 		void printList() const;
 
-		///konstruktory dekonstruktory
+		/// konstruktory dekonstruktory
 		LinkedList();
 		~LinkedList();
+
 	private:
 	};
 }
-
-
