@@ -5,14 +5,31 @@
 
 int main(void)
 {
-	ds::LinkedList a;
+	ds::LinkedList ll;
+	ll.push_end(1);
+	ll.push_end(2);
+	ll.push_end(3);
+	ll.push_end(4);
+	ll.push_end(5);
+	ll.push_end(6);
+	ll.push_end(7);
+	ll.push_end(8);
+	ll.push_end(9);
+	ll.push_end(10);
+	ll.printList();
 
-	for (size_t i = 1; i < 100; i++)
-		 a.push_index(i, i+1);
-	
-	
-	a.printList();
-	std::cout << a.getSize() << std::endl;
+	ll.pop_last();
+	ll.pop_last();
+	ll.printList();
+
+	ll.pop_index(5);
+	ll.printList();
+
+	ll.push_index(1,69);
+	ll.push_index(1,69);
+	ll.printList();
+
+	P("size: " << ll.getSize());
 
 	system("pause>nul");
 }
