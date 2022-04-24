@@ -4,7 +4,7 @@
 using namespace ds;
 
 /* - - - - - - tisk spojového seznamu - - - - - - */
-void SingleLinkedList::printList_index()const
+void SinglyLinkedList::printList_index()const
 {
 
 	node* tmp = head;
@@ -19,7 +19,7 @@ void SingleLinkedList::printList_index()const
 
 	std::cout << "~~~~~~~~~~~" << std::endl;
 }
-void SingleLinkedList::printList_iter() const
+void SinglyLinkedList::printList_iter() const
 {
 	node* tmp = head;
 	unsigned long long counter;
@@ -28,13 +28,13 @@ void SingleLinkedList::printList_iter() const
 		std::cout << tmp->data << " ";
 	}
 }
-void SingleLinkedList::printList_recursion(node* t) const
+void SinglyLinkedList::printList_recursion(node* t) const
 {
 	if (t == NULL) { return; }
 	std::cout << t->data << " ";
 	printList_recursion(t->next);
 }
-void SingleLinkedList::printList(printStyle mode) const
+void SinglyLinkedList::printList(printStyle mode) const
 {
 	switch (mode)
 	{
@@ -52,7 +52,7 @@ void SingleLinkedList::printList(printStyle mode) const
 		break;
 	}
 }
-void SingleLinkedList::printList() const
+void SinglyLinkedList::printList() const
 {
 	printList(printStyle::NORMAL);
 }
@@ -60,7 +60,7 @@ void SingleLinkedList::printList() const
 
 
 /* - - - - - - pøidání na spojový seznam - - - - - - */
-void SingleLinkedList::push_index(int index, int data)
+void SinglyLinkedList::push_index(int index, int data)
 {
 	if (index <= 1) {
 		push_front(data);
@@ -79,7 +79,7 @@ void SingleLinkedList::push_index(int index, int data)
 	add->next = tmp->next;
 	tmp->next = add;
 }
-void SingleLinkedList::push_front(int data)
+void SinglyLinkedList::push_front(int data)
 {
 	size++;
 
@@ -97,7 +97,7 @@ void SingleLinkedList::push_front(int data)
 	tmp->data = data;
 	head = tmp;
 }
-void SingleLinkedList::push_end(int data)
+void SinglyLinkedList::push_end(int data)
 {
 	size++;
 	if (head == NULL)
@@ -120,7 +120,7 @@ void SingleLinkedList::push_end(int data)
 }
 
 /* - - - - - - smazání ze Spojovéhop seznamu - - - - - - */
-void SingleLinkedList::pop_last()
+void SinglyLinkedList::pop_last()
 {
 	if (size <= 0)return;
 	size--;
@@ -129,7 +129,7 @@ void SingleLinkedList::pop_last()
 	tmp->next = NULL;
 	delete tmp->next;
 }
-void SingleLinkedList::pop_first()
+void SinglyLinkedList::pop_first()
 {
 	if (size <= 0)return;
 	size--;
@@ -137,7 +137,7 @@ void SingleLinkedList::pop_first()
 	head = tmp->next;
 	delete tmp;
 }
-void SingleLinkedList::pop_index(int index)
+void SinglyLinkedList::pop_index(int index)
 {
 	if (index > size) return;
 
@@ -162,7 +162,7 @@ void SingleLinkedList::pop_index(int index)
 
 /* - - - - - - algoritmy - - - - - - */
 //* - - - - - - obrati poradi prvku - - - - - - */
-void SingleLinkedList::reverse(reverseStyle mode)
+void SinglyLinkedList::reverse(reverseStyle mode)
 {
 	switch (mode)
 	{
@@ -174,11 +174,11 @@ void SingleLinkedList::reverse(reverseStyle mode)
 		break;
 	}
 }
-void SingleLinkedList::reverse()
+void SinglyLinkedList::reverse()
 {
 	reverse(reverseStyle::NORMAL);
 }
-void SingleLinkedList::reverse_recursion(node* tmp)
+void SinglyLinkedList::reverse_recursion(node* tmp)
 {
 	if (tmp->next == NULL) { head = tmp; return; }
 	reverse_recursion(tmp->next);
@@ -186,7 +186,7 @@ void SingleLinkedList::reverse_recursion(node* tmp)
 	q->next = tmp;
 	tmp->next = NULL;
 }
-void SingleLinkedList::reverse_iter()
+void SinglyLinkedList::reverse_iter()
 {
 	node* prev, * save, * replace;
 	replace = head;
@@ -203,12 +203,12 @@ void SingleLinkedList::reverse_iter()
 }
 
 /* - - - - - - funkce návratovách hodnot - - - - - - */
-unsigned long long SingleLinkedList::getSize() const
+unsigned long long SinglyLinkedList::getSize() const
 {
 	return size;
 }
 // vrati index na kterem nalezi hodnota
-int SingleLinkedList::locate(int find) const
+int SinglyLinkedList::locate(int find) const
 {
 	node* tmp = head;
 	int i = 0;
@@ -220,12 +220,12 @@ int SingleLinkedList::locate(int find) const
 }
 
 /* - - - - - - Konstruktory / Dekonstruktory - - - - - - */
-SingleLinkedList::SingleLinkedList()
+SinglyLinkedList::SinglyLinkedList()
 {
 	head = NULL;
 	size = 0;
 }
-SingleLinkedList::~SingleLinkedList()
+SinglyLinkedList::~SinglyLinkedList()
 {
 	head->data = NULL;
 	head->next = nullptr;

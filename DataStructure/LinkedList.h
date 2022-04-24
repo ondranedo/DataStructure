@@ -3,32 +3,21 @@
 /*
 *	autor: Ondøej Nedojedlý
 *	datum: y2022m04d15 (prvni upravy - git init commit)
-*	obsah: linked list
-*				- LL = LinkedList (spojový seznam)
 */
 
 namespace ds {
-
-	///typy výpisu na obrazovku
-	//typy formát vypisu
-	enum class printStyle : int
-	{
-		INDEX,					//indexovaný výpis	
-		ITERATION,				//normlani vypis iteraci
-		RECURSION,				//normalni vypis rekurzi
-		NORMAL = ITERATION,		//normální výpis			
-	};
-
-	//typy a vypisu seøazeni
-	enum class reverseStyle {
-		ITERATION,				//serazeni pole iteraci
-		RECURSION,				//serazeni pole rekurzi
-		NORMAL = ITERATION,		//normalni serazeni
-	};
-
+	
 	///tøídy
-	//spojový seznam s pouze dalši adresou
-	class SingleLinkedList
+	/*
+		Spojový seznam obsahující data typu 'int'.
+		Adresu na dalsi node, pomale pridavani na konec, 
+		asymptotická složitost pro funkci push_end(), pro ohranièeni shora je N,
+		N(= poèet prvkù spojopvého seznamu)
+		avšak menší jedna node, na velikost jednoho ukazatele,
+		=> výhodnìjší pro menší payload(=data kromì ukazatelu na dalši node) 
+	 	node(= jeden prvek soubìzné pamìti...)
+	*/
+	class SinglyLinkedList
 	{
 		/*  - - - - - -private primitivní datové struktury - - - - - - */
 		/*
@@ -41,6 +30,22 @@ namespace ds {
 			node* next;
 		};
 
+		///typy výpisu na obrazovku
+		//typy formát vypisu
+		enum class printStyle : int
+		{
+			INDEX,					//indexovaný výpis	
+			ITERATION,				//normlani vypis iteraci
+			RECURSION,				//normalni vypis rekurzi
+			NORMAL = ITERATION,		//normální výpis	
+		};
+
+		//typy a vypisu seøazeni
+		enum class reverseStyle {
+			ITERATION,				//serazeni pole iteraci
+			RECURSION,				//serazeni pole rekurzi
+			NORMAL = ITERATION,		//normalni serazeni
+		};
 
 		/* - - - - - - private promìnné - - - - - - */
 		unsigned long long size;		//délka L
@@ -49,8 +54,8 @@ namespace ds {
 
 		/* - - - - - - public metody - - - - - - */
 	public:
-		SingleLinkedList();
-		~SingleLinkedList();
+		SinglyLinkedList();
+		~SinglyLinkedList();
 
 		void printList(printStyle mode) const;	//vypíše LL dle zvoleneho módu
 		void printList() const;					//vypíše LL standartnì STANDARD
@@ -76,7 +81,15 @@ namespace ds {
 		void reverse_iter();							//obrátí LL pres iteraci
 	};
 
-	//spojový seznam se dvìma adresami
+	/*
+		Spojový seznam obsahující data typu 'int'.
+		Adresu na dalsi node, a node pøedchozí, 
+		asymptotická složitost pro funkci push_end(), pro ohranièeni shora je konstanta 1,
+		avšak vìtší jedna node o jeden ukazatel
+		[u 64b arch. pointer = 8B; u 32b arch. pointer = 4B]
+		=> výhodnìjší u vyšší velikost payloadu(=data kromì ukazatelu na dalši node) 
+		node(= jeden prvek soubìzné pamìti obsahující 2*node poniter a payload)
+	*/
 	class LinkedList
 	{
 	private:
