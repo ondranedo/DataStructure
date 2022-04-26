@@ -13,7 +13,7 @@ LinkedListStack::~LinkedListStack()
 
 int LinkedListStack::pop()
 {
-	return 0;
+	return LL.pop_first();
 }
 
 void LinkedListStack::push(int value)
@@ -23,7 +23,7 @@ void LinkedListStack::push(int value)
 
 void LinkedListStack::clear()
 {
-	
+	LL.clearLinkedList();
 }
 
 size_t LinkedListStack::getCurrentSize() const
