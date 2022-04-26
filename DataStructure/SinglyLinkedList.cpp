@@ -27,6 +27,7 @@ void SinglyLinkedList::printList_iter() const
 	{
 		std::cout << tmp->data << " ";
 	}
+	std::cout << std::endl;
 }
 void SinglyLinkedList::printList_recursion(node* t) const
 {
@@ -43,6 +44,7 @@ void SinglyLinkedList::printList(printStyle mode) const
 		break;
 	case printStyle::RECURSION:
 		printList_recursion(head);
+		std::cout << std::endl;
 		break;
 	case printStyle::INDEX:
 		printList_index();
@@ -120,34 +122,39 @@ void SinglyLinkedList::push_end(int data)
 }
 
 /* - - - - - - smazání ze Spojovéhop seznamu - - - - - - */
-void SinglyLinkedList::pop_last()
+int SinglyLinkedList::pop_last()
 {
-	if (size <= 0)return;
+	int reVal;
+	if (size <= 0)return -1;
 	size--;
 	node* tmp = head;
 	for (; tmp->next->next != NULL; tmp = tmp->next) {}
+	reVal = tmp->data;
 	tmp->next = NULL;
 	delete tmp->next;
+	return reVal;
 }
-void SinglyLinkedList::pop_first()
+int SinglyLinkedList::pop_first()
 {
-	if (size <= 0)return;
+	int reVal;
+	if (size <= 0) return -1;
 	size--;
 	node* tmp = head;
+	reVal = head->data;
 	head = tmp->next;
 	delete tmp;
+	return reVal;
 }
-void SinglyLinkedList::pop_index(int index)
+int SinglyLinkedList::pop_index(int index)
 {
-	if (index > size) return;
+	if (index > size) return -1;
 
 
 	if (index <= 1)
 	{
-		pop_first();
-		return;
+		return pop_first();
 	}
-
+	int reVal;
 	size--;
 	node* tmpl = head;
 
@@ -155,9 +162,10 @@ void SinglyLinkedList::pop_index(int index)
 		tmpl = tmpl->next;
 
 	node* tmpr = tmpl->next;
-
 	tmpl->next = tmpr->next;
+	reVal = tmpr->data;
 	delete tmpr;
+	return reVal;
 }
 
 /* - - - - - - algoritmy - - - - - - */
@@ -203,7 +211,7 @@ void SinglyLinkedList::reverse_iter()
 }
 
 /* - - - - - - funkce návratovách hodnot - - - - - - */
-unsigned long long SinglyLinkedList::getSize() const
+size_t SinglyLinkedList::getSize() const
 {
 	return size;
 }
@@ -219,6 +227,21 @@ int SinglyLinkedList::locate(int find) const
 	return i + 1;
 }
 
+void SinglyLinkedList::clearLinkedList()
+{
+	node* tmp = head;
+	node* next = tmp->next;
+
+	while (tmp->next != NULL)
+	{
+		delete tmp;
+		tmp = next;
+		next = next->next;
+	}
+	head = NULL;
+	size = 0;
+}
+
 /* - - - - - - Konstruktory / Dekonstruktory - - - - - - */
 SinglyLinkedList::SinglyLinkedList()
 {
@@ -227,7 +250,5 @@ SinglyLinkedList::SinglyLinkedList()
 }
 SinglyLinkedList::~SinglyLinkedList()
 {
-	head->data = NULL;
-	head->next = nullptr;
-	delete head;
+	clearLinkedList();
 }

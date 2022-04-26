@@ -11,11 +11,12 @@ LinkedList::LinkedList()
 }
 LinkedList::~LinkedList()
 {
-	delete head;
+	clearLinkedList();
 }
 
 void LinkedList::printList() const
 {
+	if (head == NULL) return;
 	node* tmp = head;
 	while (tmp != NULL)
 	{
@@ -24,6 +25,22 @@ void LinkedList::printList() const
 		tmp = tmp->next;
 	}
 	std::cout << std::endl;
+}
+
+void LinkedList::clearLinkedList()
+{
+	node* tmp = head;
+	node* _next = tmp->next;
+
+	while (tmp->next != NULL)
+	{
+		delete tmp;
+		tmp = _next;
+		_next = _next->next;
+	}
+	head = NULL;
+	tail = NULL;
+	size = 0;
 }
 
 //setters a getters
@@ -118,44 +135,45 @@ void LinkedList::push_index(size_t index, int data)
 	tmp->next = _new;
 }
 
-void LinkedList::pop_first()
+int LinkedList::pop_first()
 {
-	if (head == NULL) return;
+	int rVal;
+	if (tail == NULL) return -1;
 	size--;
 	node* tmp = head;
+	rVal = tmp->data;
 	head = head->next;
 	head->prev = nullptr;
 	delete tmp;
+	return rVal;
 }
-void LinkedList::pop_last()
+int LinkedList::pop_last()
 {
-	if (tail == NULL) return;
+	int rVal;
+	if (tail == NULL) return -1;
 	size--;
 	node* tmp = tail;
+	rVal = tmp->data;
 	tail = tail->prev;
 	tail->next = nullptr;
 	delete tmp;
+	return rVal;
 }
-void LinkedList::pop_index(size_t index)
+int LinkedList::pop_index(size_t index)
 {
 	//kontroly
-	if (head == NULL) 
-	{
-		return; 
-	}
+	if (tail == NULL) return -1;
 	if (index > size || index <= 0)
 	{
-		std::cout << "@push_index index error" << std::endl; return;
+		std::cout << "@push_index index error" << std::endl; return -1;
 	}
 	if (index == 1)
 	{ 
-		pop_first();
-		return;
+		return pop_first();
 	}
 	if (index == size)
 	{ 
-		pop_last(); 
-		return;
+		return pop_last();
 	}
 
 	//pomocne ukazatele
@@ -176,11 +194,13 @@ void LinkedList::pop_index(size_t index)
 		for (size_t i = size; i >= index; i--)
 			tmp = tmp->prev;
 	}
-
+	int rVal;
 	//smaze node a upravi pointry
 	size--;
 	tmp->next->next->prev = tmp;
 	node* del = tmp->next;
+	rVal = del->data;
 	tmp->next = del->next;
 	delete del;
+	return rVal;
 }
