@@ -228,6 +228,8 @@ int SinglyLinkedList::locate(int find) const
 
 void SinglyLinkedList::clearLinkedList()
 {
+	if (head == NULL) return;
+
 	node* tmp = head;
 	node* next = tmp->next;
 
