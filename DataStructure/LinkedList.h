@@ -51,7 +51,7 @@ namespace ds
 		};
 
 		/* - - - - - - private prom�nn� - - - - - - */
-		unsigned long long size; // d�lka L
+		size_t size; // d�lka L
 		node *head;				 // head linkedlist
 
 		/* - - - - - - public metody - - - - - - */
@@ -64,13 +64,14 @@ namespace ds
 		void push_end(int data);			   // vlo�� na konec LL hodnotu
 		void push_front(int data);			   // vlo�� na za��tek LL hodnotu
 		void push_index(int index, int data);  // vlo�� na nThou pozici LL hodnotu
-		unsigned long long getSize() const;	   // vr�t� velikost (po�et prvk�) LL
-		void pop_last();					   // odstran� posledn� hodnotu LL
-		void pop_first();					   // odstran� prvn� hodnotu LL
-		void pop_index(int index);			   // odstran� hodnotu LL na nThe pozici
+		size_t getSize() const;	   // vr�t� velikost (po�et prvk�) LL
+		int pop_last();					   // odstran� posledn� hodnotu LL
+		int pop_first();					   // odstran� prvn� hodnotu LL
+		int pop_index(int index);			   // odstran� hodnotu LL na nThe pozici
 		void reverse(reverseStyle mode);	   // prohodi v�echny ukazatele LL => obr�t� LL
 		void reverse();						   // prohodi v�echny ukazatele LL => obr�t� LL - NORMAL
-		int locate(int find) const;			   // vyhled� v LL hodnotu
+		int locate(int find) const;			   // vyhled� v LL hodnotu a vrati index
+		void  clearLinkedList();				   //smaye celz stack
 
 		/* - - - - - -private metody - - - - - - */
 	private:
@@ -118,19 +119,22 @@ namespace ds
 		void push_index(size_t index, int data);
 
 		// sma�e prvn� hodnotu
-		void pop_first();
+		int pop_first();
 
 		// sma�e posledn� hodnotu
-		void pop_last();
+		int pop_last();
 
 		// sma�e hodnotu z ur�it�ho indexu
-		void pop_index(size_t index);
+		int pop_index(size_t index);
 
 		// vr�ti hodnotu velikosti pole
 		size_t getSize() const;
 
 		// vztiskne LL na jeden ��dek
 		void printList() const;
+
+		//smaze stack
+		void clearLinkedList();
 
 		/// konstruktory dekonstruktory
 		LinkedList();

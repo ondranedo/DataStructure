@@ -4,5 +4,6 @@
 
 int main(void)
 {
+
 	system("pause>nul");
 }

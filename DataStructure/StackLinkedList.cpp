@@ -13,6 +13,7 @@ LinkedListStack::~LinkedListStack()
 
 int LinkedListStack::pop()
 {
+	return 0;
 }
 
 void LinkedListStack::push(int value)
