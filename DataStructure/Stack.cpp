@@ -4,26 +4,26 @@
 using namespace ds;
 
 
-Stack::Stack()
+ArrayStack::ArrayStack()
 {
 	m_currentSize = 0;
 	m_maxSize = 1024;
 	m_stack = new int[m_maxSize];
 }
 
-Stack::Stack(size_t maxSize)
+ArrayStack::ArrayStack(size_t maxSize)
 {
 	m_currentSize = 0;
 	m_maxSize = maxSize;
 	m_stack = new int[m_maxSize];
 }
 
-Stack::~Stack()
+ArrayStack::~ArrayStack()
 {
 	delete[] m_stack;
 }
 
-int Stack::pop()
+int ArrayStack::pop()
 {
 	if (m_currentSize == 0) return 0;
 
@@ -32,36 +32,36 @@ int Stack::pop()
 	return poppedVal;
 }
 
-void Stack::push(int value)
+void ArrayStack::push(int value)
 {
 	if (m_currentSize >= m_maxSize) { reallocateOnHeap(); }
 	m_stack[m_currentSize] = value;
 	m_currentSize++;
 }
 
-void Stack::clear()
+void ArrayStack::clear()
 {
 	m_currentSize = 0;
 }
 
-size_t Stack::getMaxSize() const
+size_t ArrayStack::getMaxSize() const
 {
 	return m_maxSize;
 }
 
-size_t Stack::getCurrentSize() const
+size_t ArrayStack::getCurrentSize() const
 {
 	return m_currentSize;
 }
 
-void Stack::printStack() const
+void ArrayStack::printStack() const
 {
 	for (size_t i = 0; i < m_currentSize; i++)
 		std::cout << m_stack[i] << " ";
 	std::cout << std::endl;
 }
 
-void Stack::reallocateOnHeap()
+void ArrayStack::reallocateOnHeap()
 {
 	m_maxSize *= 2;
 	int* old_stack = m_stack;

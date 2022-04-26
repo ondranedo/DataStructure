@@ -38,6 +38,9 @@
     <ClCompile Include="Stack.cpp">
       <Filter>Sources\CLASSES\Stack</Filter>
     </ClCompile>
+    <ClCompile Include="StackLinkedList.cpp">
+      <Filter>Sources\CLASSES\Stack</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
