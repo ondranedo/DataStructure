@@ -29,6 +29,7 @@ void LinkedList::printList() const
 
 void LinkedList::clearLinkedList()
 {
+	if (head == NULL) return;
 	node* tmp = head;
 	node* _next = tmp->next;
 
