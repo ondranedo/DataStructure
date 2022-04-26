@@ -1,5 +1,5 @@
 #pragma once
-#include "LinkedList.h"
+#include "pch.h"
 
 namespace ds {
 	
@@ -14,14 +14,14 @@ namespace ds {
 		//smaže celý stack
 		virtual void clear() = 0;
 
-		//zjistí akutální velikost stacku
+		//zjistí akutální velikost v prvcích stacku
 		virtual size_t getCurrentSize() const = 0;
 
-		//vypise cely stack
+		//vypíše celý stack
 		virtual void printStack() const = 0;
 	};
 	
-	//tøída pro stack z dynamického pole
+//tøída pro stack z dynamického pole
 	class ArrayStack :public __vStack
 {
 private:

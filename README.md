@@ -11,12 +11,12 @@
 
 ### Singly Linked List
 
-![](./gitgub/pic/SinglyLinkedList.png)
+![](./github/pic/SinglyLinkedList.png)
 
 ### Doubly Linked List
 
-![](./gitgub/pic/DoublyLinkedList.png)
+![](./github/pic/DoublyLinkedList.png)
 
 ### Stack
 
--work in progress... 🚀
+![](./github/pic/Stack.png)
