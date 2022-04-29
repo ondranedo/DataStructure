@@ -1,5 +1,5 @@
 #pragma once
-
+#include "pch.h"
 /*
  *	autor: Ond�ej Nedojedl�
  *	datum: y2022m04d15 (prvni upravy - git init commit)
@@ -7,80 +7,6 @@
 
 namespace ds
 {
-
-	/// t��dy
-	/*
-		Spojov� seznam obsahuj�c� data typu 'int'.
-		Adresu na dalsi node, pomale pridavani na konec,
-		asymptotick� slo�itost pro funkci push_end(), pro ohrani�eni shora je N,
-		N(= po�et prvk� spojopv�ho seznamu)
-		av�ak men�� jedna node, na velikost jednoho ukazatele,
-		=> v�hodn�j�� pro men�� payload(=data krom� ukazatelu na dal�i node)
-		node(= jeden prvek soub�zn� pam�ti...)
-	*/
-	class SinglyLinkedList
-	{
-		/*  - - - - - -private primitivn� datov� struktury - - - - - - */
-		/*
-		 *	struktura kde jedna ��st pam�ti p�edstavuje
-		 *	jeden tzv. "node", co� je jeden prvek
-		 *	spojov�ho seznamu
-		 */
-		struct node
-		{
-			int data;
-			node *next;
-		};
-
-		/// typy v�pisu na obrazovku
-		// typy form�t vypisu
-		enum class printStyle : int
-		{
-			INDEX,				// indexovan� v�pis
-			ITERATION,			// normlani vypis iteraci
-			RECURSION,			// normalni vypis rekurzi
-			NORMAL = ITERATION, // norm�ln� v�pis
-		};
-
-		// typy a vypisu se�azeni
-		enum class reverseStyle
-		{
-			ITERATION,			// serazeni pole iteraci
-			RECURSION,			// serazeni pole rekurzi
-			NORMAL = ITERATION, // normalni serazeni
-		};
-
-		/* - - - - - - private prom�nn� - - - - - - */
-		size_t size; // d�lka L
-		node *head;				 // head linkedlist
-
-		/* - - - - - - public metody - - - - - - */
-	public:
-		SinglyLinkedList();
-		~SinglyLinkedList();
-
-		void printList(printStyle mode) const; // vyp�e LL dle zvoleneho m�du
-		void printList() const;				   // vyp�e LL standartn� STANDARD
-		void push_end(int data);			   // vlo�� na konec LL hodnotu
-		void push_front(int data);			   // vlo�� na za��tek LL hodnotu
-		void push_index(int index, int data);  // vlo�� na nThou pozici LL hodnotu
-		size_t getSize() const;	   // vr�t� velikost (po�et prvk�) LL
-		int pop_last();					   // odstran� posledn� hodnotu LL
-		int pop_first();					   // odstran� prvn� hodnotu LL
-		int pop_index(int index);			   // odstran� hodnotu LL na nThe pozici
-		void reverse(reverseStyle mode);	   // prohodi v�echny ukazatele LL => obr�t� LL
-		void reverse();						   // prohodi v�echny ukazatele LL => obr�t� LL - NORMAL
-		int locate(int find) const;			   // vyhled� v LL hodnotu a vrati index
-		void  clearLinkedList();				   //smaye celz stack
-
-		/* - - - - - -private metody - - - - - - */
-	private:
-		void printList_iter() const;			 // vyp�e bez indexu iteraci
-		void printList_index() const;			 // vyp�e s indexem norm�ln�
-		void printList_recursion(node *t) const; // vyp�e bez indexu rekurzivne
-		void reverse_recursion(node *tmp);		 // obr�t� LL pres rekurzy
-		void reverse_iter();					 // obr�t� LL pres iteraci
-	};
 
 	/*
 		Spojov� seznam obsahuj�c� data typu 'int'.
@@ -91,13 +17,14 @@ namespace ds
 		=> v�hodn�j�� u vy��� velikost payloadu(=data krom� ukazatelu na dal�i node)
 		node(= jeden prvek soub�zn� pam�ti obsahuj�c� 2*node poniter a payload)
 	*/
+	template<class T>
 	class LinkedList
 	{
 	private:
 		/* - - - - - - dal�� prvky - - - - - - */
 		struct node
 		{
-			int data;
+			T data;
 			node *next;
 			node *prev;
 		};
@@ -110,22 +37,22 @@ namespace ds
 	public:
 		/// public metodu
 		// p�id� hodnotu na za��tek
-		void push_front(int data);
+		void push_front(T data);
 
 		// p�id� hodnotu na konec
-		void push_end(int data);
+		void push_end(T data);
 
 		// p�id� hodnotu na ur�it� index
-		void push_index(size_t index, int data);
+		void push_index(size_t index, T data);
 
 		// sma�e prvn� hodnotu
-		int pop_first();
+		T pop_first();
 
 		// sma�e posledn� hodnotu
-		int pop_last();
+		T pop_last();
 
 		// sma�e hodnotu z ur�it�ho indexu
-		int pop_index(size_t index);
+		T pop_index(size_t index);
 
 		// vr�ti hodnotu velikosti pole
 		size_t getSize() const;
@@ -142,4 +69,215 @@ namespace ds
 
 	private:
 	};
+}
+using namespace ds;
+template<class T>
+LinkedList<T>::LinkedList()
+{
+	size = 0;
+	head = nullptr;
+	tail = nullptr;
+}
+template<class T>
+LinkedList<T>::~LinkedList()
+{
+	clearLinkedList();
+}
+template<class T>
+void LinkedList<T>::printList() const
+{
+	if (head == NULL) return;
+	node* tmp = head;
+	while (tmp != NULL)
+	{
+
+		std::cout << tmp->data << " ";
+		tmp = tmp->next;
+	}
+	std::cout << std::endl;
+}
+template<class T>
+void LinkedList<T>::clearLinkedList()
+{
+	if (head == NULL) return;
+	node* tmp = head;
+	node* _next = tmp->next;
+
+	while (tmp->next != NULL)
+	{
+		delete tmp;
+		tmp = _next;
+		_next = _next->next;
+	}
+	head = NULL;
+	tail = NULL;
+	size = 0;
+}
+
+//setters a getters
+template<class T>
+size_t LinkedList<T>::getSize() const
+{
+	return size;
+}
+
+//funkce vložení
+template<class T>
+void LinkedList<T>::push_front(T data)
+{
+	size++;
+	if (head == NULL)
+	{
+		head = new node;
+		head->data = data;
+		head->next = nullptr;
+		head->prev = nullptr;
+		tail = head;
+		return;
+	}
+	node* tmp = head;
+	head = new node;
+	head->data = data;
+	head->next = tmp;
+	head->prev = nullptr;
+	tmp->prev = head;
+}
+template<class T>
+void LinkedList<T>::push_end(T data)
+{
+	size++;
+	if (tail == NULL)
+	{
+		tail = new node;
+		tail->data = data;
+		tail->next = nullptr;
+		tail->prev = nullptr;
+		head = tail;
+		return;
+	}
+	node* tmp = tail;
+	tail = new node;
+	tail->data = data;
+	tail->next = nullptr;
+	tail->prev = tmp;
+	tmp->next = tail;
+}
+template<class T>
+void LinkedList<T>::push_index(size_t index, T data)
+{
+	//kontroly
+	if (head == NULL)
+	{
+		tail = new node;
+		tail->data = data;
+		tail->next = nullptr;
+		tail->prev = nullptr;
+		head = tail;
+		size++;
+		return;
+	}
+	if (index == 1) { push_front(data); return; }
+	if (index == size) { push_end(data); return; }
+	if (index > size + 1 || index <= 0)
+	{
+		std::cout << "@push_index index error" << std::endl;
+		return;
+	}
+
+	//pomocne ukazatele
+	node* tmp = nullptr;
+
+	//najde node pred nodem ktery se ma smazat od head
+	if (index < size / 2)
+	{
+		tmp = head;
+		for (size_t i = 1; i < index - 1; i++)
+			tmp = tmp->next;
+	}
+
+	//najde node pred nodem ktery se ma smazat od tailu
+	if (index >= size / 2)
+	{
+		tmp = tail;
+		for (size_t i = size; i >= index; i--)
+			tmp = tmp->prev;
+	}
+	size++;
+	node* _new = new node;
+	_new->data = data;
+	_new->next = tmp->next;
+	_new->prev = tmp;
+	tmp->next = _new;
+}
+template<class T>
+T LinkedList<T>::pop_first()
+{
+	T rVal;
+	if (tail == NULL) return -1;
+	size--;
+	node* tmp = head;
+	rVal = tmp->data;
+	head = head->next;
+	head->prev = nullptr;
+	delete tmp;
+	return rVal;
+}
+template<class T>
+T LinkedList<T>::pop_last()
+{
+	T rVal;
+	if (tail == NULL) return -1;
+	size--;
+	node* tmp = tail;
+	rVal = tmp->data;
+	tail = tail->prev;
+	tail->next = nullptr;
+	delete tmp;
+	return rVal;
+}
+template<class T>
+T LinkedList<T>::pop_index(size_t index)
+{
+	//kontroly
+	if (tail == NULL) return -1;
+	if (index > size || index <= 0)
+	{
+		std::cout << "@push_index index error" << std::endl; return -1;
+	}
+	if (index == 1)
+	{
+		return pop_first();
+	}
+	if (index == size)
+	{
+		return pop_last();
+	}
+
+	//pomocne ukazatele
+	node* tmp = nullptr;
+
+	//najde node pred nodem ktery se ma smazat od head
+	if (index < size / 2)
+	{
+		tmp = head;
+		for (size_t i = 1; i < index - 1; i++)
+			tmp = tmp->next;
+	}
+
+	//najde node pred nodem ktery se ma smazat od tailu
+	if (index >= size / 2)
+	{
+		tmp = tail;
+		for (size_t i = size; i >= index; i--)
+			tmp = tmp->prev;
+	}
+	T rVal;
+	//smaze node a upravi pointry
+	size--;
+	tmp->next->next->prev = tmp;
+	node* del = tmp->next;
+	rVal = del->data;
+	tmp->next = del->next;
+	delete del;
+	return rVal;
 }

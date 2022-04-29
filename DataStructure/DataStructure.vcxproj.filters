@@ -29,18 +29,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="SinglyLinkedList.cpp">
-      <Filter>Sources\CLASSES\LinkedList</Filter>
-    </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>Sources\CLASSES\LinkedList</Filter>
-    </ClCompile>
-    <ClCompile Include="Stack.cpp">
-      <Filter>Sources\CLASSES\Stack</Filter>
-    </ClCompile>
-    <ClCompile Include="StackLinkedList.cpp">
-      <Filter>Sources\CLASSES\Stack</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
