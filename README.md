@@ -7,16 +7,24 @@
 
 [![](https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C++_Logo.svg)](https://en.wikipedia.org/wiki/C++)
 
+---
+
 ## Napsané datové struktury
 
-### Singly Linked List
+### LinkedList
 
-![](./github/pic/SinglyLinkedList.png)
+-naspaný linked list je psán jako **Doubly linked list**
 
-### Doubly Linked List
-
-![](./github/pic/DoublyLinkedList.png)
-
-### Stack
-
-![](./github/pic/Stack.png)
+|náv. hodnota|metoda|složistost
+|-|-|-|
+|data|popHead()     |O(1)|
+|data|popTail()     |O(1)|
+|data|popIndex(i)   |O(N)|
+|||
+|bool|pushHead(x)   |O(1)|
+|bool|pushTail(x)   |O(1)|
+|bool|pushIndex(i,x)|O(N)|
+||||
+|data|search(x)     |O(N)|
+|bool|clear(x)      |O(N)|
+|data|size()        |O(1)|

@@ -12,6 +12,9 @@
     <Filter Include="Sources\PCH">
       <UniqueIdentifier>{d4a69ade-4bf4-4079-ab7a-f044c5dfda15}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\ds">
+      <UniqueIdentifier>{63f3d50f-0ed1-4e13-bae7-ef20031e042d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -25,5 +28,17 @@
     <ClInclude Include="pch.h">
       <Filter>Sources\PCH</Filter>
     </ClInclude>
+    <ClInclude Include="ds\LinkedList.h">
+      <Filter>Sources\ds</Filter>
+    </ClInclude>
+    <ClInclude Include="ds\Queue.h">
+      <Filter>Sources\ds</Filter>
+    </ClInclude>
+    <ClInclude Include="ds\Stack.h">
+      <Filter>Sources\ds</Filter>
+    </ClInclude>
+    <ClInclude Include="ds\LinkedList.hpp" />
+    <ClInclude Include="ds\Queue.hpp" />
+    <ClInclude Include="ds\Stack.hpp" />
   </ItemGroup>
 </Project>
