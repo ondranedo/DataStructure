@@ -12,15 +12,6 @@
     <Filter Include="Sources\PCH">
       <UniqueIdentifier>{d4a69ade-4bf4-4079-ab7a-f044c5dfda15}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\CLASSES">
-      <UniqueIdentifier>{96e2e401-c881-4998-bf87-c91da02f3257}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\CLASSES\LinkedList">
-      <UniqueIdentifier>{af7e3d2c-e04b-46ec-8ebd-6550d76b92fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\CLASSES\Stack">
-      <UniqueIdentifier>{67449079-6c0a-4040-9da3-6bf4ebbbcdea}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -33,12 +24,6 @@
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Sources\PCH</Filter>
-    </ClInclude>
-    <ClInclude Include="LinkedList.h">
-      <Filter>Sources\CLASSES\LinkedList</Filter>
-    </ClInclude>
-    <ClInclude Include="Stack.h">
-      <Filter>Sources\CLASSES\Stack</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
