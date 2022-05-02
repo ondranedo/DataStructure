@@ -2,7 +2,7 @@
  *	@date: y2022m05d01
  *	@autor: Ondrej Nedojedly
  */
-
+#pragma once
 #include "../pch.h"
 
 namespace ds {

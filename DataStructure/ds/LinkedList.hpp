@@ -21,12 +21,21 @@ LinkedList<T>::~LinkedList() {
 template<class T>
 T LinkedList<T>::popHead()
 {
+	if (m_head == nullptr) { return false; }
 	T rval = m_head->data;
 	node* del = m_head;
 
-	m_head = m_head->next;
-	m_head->prev = nullptr;
-
+	if (m_head->next != nullptr) 
+	{
+		m_head = m_head->next;
+		m_head->prev = nullptr;
+	}
+	else
+	{
+		m_head = nullptr;
+		m_tail = nullptr;
+	}
+	
 	delete del;
 	m_size--;
 	return rval;
@@ -35,6 +44,7 @@ T LinkedList<T>::popHead()
 template<class T>
 T LinkedList<T>::popTail()
 {
+	if (m_head == nullptr) { return false; }
 	T rval = m_tail->data;
 	node* del = m_tail;
 

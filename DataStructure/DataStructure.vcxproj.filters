@@ -15,6 +15,12 @@
     <Filter Include="Sources\ds">
       <UniqueIdentifier>{63f3d50f-0ed1-4e13-bae7-ef20031e042d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\ds\deklarace">
+      <UniqueIdentifier>{4be39e55-5b3e-4a34-8b94-d0011366f135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\ds\inicialnizace">
+      <UniqueIdentifier>{23232b75-cba0-4513-9447-c706631d0968}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -28,17 +34,23 @@
     <ClInclude Include="pch.h">
       <Filter>Sources\PCH</Filter>
     </ClInclude>
-    <ClInclude Include="ds\LinkedList.h">
-      <Filter>Sources\ds</Filter>
+    <ClInclude Include="ds\Stack.h">
+      <Filter>Sources\ds\deklarace</Filter>
     </ClInclude>
     <ClInclude Include="ds\Queue.h">
-      <Filter>Sources\ds</Filter>
+      <Filter>Sources\ds\deklarace</Filter>
     </ClInclude>
-    <ClInclude Include="ds\Stack.h">
-      <Filter>Sources\ds</Filter>
+    <ClInclude Include="ds\LinkedList.h">
+      <Filter>Sources\ds\deklarace</Filter>
     </ClInclude>
-    <ClInclude Include="ds\LinkedList.hpp" />
-    <ClInclude Include="ds\Queue.hpp" />
-    <ClInclude Include="ds\Stack.hpp" />
+    <ClInclude Include="ds\Stack.hpp">
+      <Filter>Sources\ds\inicialnizace</Filter>
+    </ClInclude>
+    <ClInclude Include="ds\LinkedList.hpp">
+      <Filter>Sources\ds\inicialnizace</Filter>
+    </ClInclude>
+    <ClInclude Include="ds\Queue.hpp">
+      <Filter>Sources\ds\inicialnizace</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
