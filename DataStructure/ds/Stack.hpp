@@ -4,9 +4,10 @@
 using namespace ds;
 
 template<class T>
-bool Stack<T>::push(T data)
+void Stack<T>::push(T data)
 {
-	return m_ll.pushHead(data);
+	m_ll.pushHead(data);
+	return;
 }
 
 template<class T>
@@ -30,7 +31,8 @@ bool Stack<T>::isEmpty() const
 }
 
 template<class T>
-bool Stack<T>::clear()
+void Stack<T>::clear()
 {
-	return m_ll.clear();
+	m_ll.clear();
+	return;
 }

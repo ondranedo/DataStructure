@@ -13,11 +13,11 @@ namespace ds {
 		ds::LinkedList<T> m_ll;
 
 	public:
-		bool push(T data);
+		void push(T data);
 		T pop();
 		T top() const;
 		bool isEmpty() const;
-		bool clear();
+		void clear();
 	};
 }
 

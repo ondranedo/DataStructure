@@ -21,7 +21,7 @@ LinkedList<T>::~LinkedList() {
 template<class T>
 T LinkedList<T>::popHead()
 {
-	if (m_head == nullptr) { return false; }
+	if (m_head == nullptr) { return m_head->data; }
 	T rval = m_head->data;
 	node* del = m_head;
 
@@ -44,7 +44,7 @@ T LinkedList<T>::popHead()
 template<class T>
 T LinkedList<T>::popTail()
 {
-	if (m_head == nullptr) { return false; }
+	if (m_head == nullptr) { return m_head->data; }
 	T rval = m_tail->data;
 	node* del = m_tail;
 
@@ -60,7 +60,7 @@ template<class T>
 T LinkedList<T>::popIndex(size_t index)
 {
 	//kontroly
-	if (m_head == nullptr) { return false; }
+	if (m_head == nullptr) { return m_head->data;}
 	if (index <= 1) { return popHead(); }
 	if (index >= m_size) { return popTail(); }
 
@@ -108,7 +108,7 @@ T LinkedList<T>::popIndex(size_t index)
 
 
 template <class T>
-bool LinkedList<T>::pushHead(T data) {
+void LinkedList<T>::pushHead(T data) {
 	if (m_head == nullptr)
 	{
 		m_head = new node;
@@ -117,7 +117,7 @@ bool LinkedList<T>::pushHead(T data) {
 		m_head->data = data;
 		m_tail = m_head;
 		m_size++;
-		return true;
+		return;
 	}
 
 	node* tmp = new node;
@@ -127,11 +127,11 @@ bool LinkedList<T>::pushHead(T data) {
 	m_head->prev = tmp;
 	m_head = tmp;
 	m_size++;
-	return true;
+	return;
 }
 
 template <class T>
-bool LinkedList<T>::pushTail(T data) {
+void LinkedList<T>::pushTail(T data) {
 	if (m_head == nullptr)
 	{
 		m_head = new node;
@@ -140,7 +140,7 @@ bool LinkedList<T>::pushTail(T data) {
 		m_head->data = data;
 		m_tail = m_head;
 		m_size++;
-		return true;
+		return;
 	}
 
 	node* tmp = new node;
@@ -150,11 +150,11 @@ bool LinkedList<T>::pushTail(T data) {
 	m_tail->next = tmp;
 	m_tail = tmp;
 	m_size++;
-	return true;
+	return;
 }
 
 template<class T>
-bool LinkedList<T>::pushIndex(size_t index, T data)
+void LinkedList<T>::pushIndex(size_t index, T data)
 {
 	//kontroly
 	if (m_head == nullptr)
@@ -165,10 +165,10 @@ bool LinkedList<T>::pushIndex(size_t index, T data)
 		m_head->data = data;
 		m_tail = m_head;
 		m_size++;
-		return true;
+		return;
 	}
-	if (index <= 1) { return pushHead(data); }
-	if (index > m_size) { return pushTail(data); }
+	if (index <= 1) { pushHead(data); return; }
+	if (index > m_size) { pushTail(data); return; }
 	if (index == m_size) {
 		node* newn = new node;
 		newn->data = data;
@@ -178,7 +178,7 @@ bool LinkedList<T>::pushIndex(size_t index, T data)
 		m_tail->prev->next = newn;
 		m_tail->prev = newn;
 		m_size++;
-		return true;
+		return;
 	}
 
 	//hledani node pred indexovanou
@@ -219,7 +219,7 @@ bool LinkedList<T>::pushIndex(size_t index, T data)
 	newn->next->prev = newn;
 
 	m_size++;
-	return true;
+	return;
 }
 
 
@@ -229,8 +229,9 @@ bool LinkedList<T>::pushIndex(size_t index, T data)
 template<class T>
 T LinkedList<T>::search(size_t index) const
 {
-	if (index <= 0) { return NULL; }
-	if (index > m_size) { return NULL; }
+	if (index <= 0) { return m_null; }
+	if (index > m_size) { return m_null; }
+	if (m_head == nullptr) { return m_null; }
 
 	//hledani node pred indexovanou
 	size_t counter = NULL;
@@ -264,9 +265,9 @@ T LinkedList<T>::search(size_t index) const
 }
 
 template<class T>
-bool LinkedList<T>::clear()
+void LinkedList<T>::clear()
 {
-	if (m_head == nullptr) { return false; }
+	if (m_head == nullptr) { return; }
 
 	node* prev = nullptr;
 
@@ -279,39 +280,11 @@ bool LinkedList<T>::clear()
 
 	m_tail = nullptr;
 	m_size = 0;
-	return true;
+	return;
 }
 
 template<class T>
 size_t LinkedList<T>::size() const
 {
 	return m_size;
-}
-
-
-
-
-
-template<class T>
-void LinkedList<T>::printHead() const
-{
-	node* tmp = m_head;
-	while (tmp != nullptr)
-	{
-		std::cout << tmp->data << " ";
-		tmp = tmp->next;
-	}
-	std::cout << std::endl;
-}
-
-template<class T>
-void LinkedList<T>::printTail() const
-{
-	node* tmp = m_tail;
-	while (tmp != nullptr)
-	{
-		std::cout << tmp->data << " ";
-		tmp = tmp->prev;
-	}
-	std::cout << std::endl;
 }

@@ -20,6 +20,7 @@ namespace ds {
 		size_t m_size;
 		node* m_head;
 		node* m_tail;
+		T m_null = NULL; //prazda oamet ktera se ma vracet
 
 	public:
 		//public metody
@@ -28,14 +29,12 @@ namespace ds {
 		T popHead();
 		T popTail();
 		T popIndex(size_t index);
-		bool pushHead(T data);
-		bool pushTail(T data);
-		bool pushIndex(size_t index, T data);
+		void pushHead(T data);
+		void pushTail(T data);
+		void pushIndex(size_t index, T data);
 		T search(size_t index) const;
-		bool clear();
+		void clear();
 		size_t size() const;
-		void printHead() const;
-		void printTail() const;
 	};
 }
 

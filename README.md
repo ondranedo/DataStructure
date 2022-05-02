@@ -22,12 +22,12 @@
 |data|popTail()     |O(1)|
 |data|popIndex(i)   |O(N)|
 |**PUSHING:**
-|bool|pushHead(x)   |O(1)|
-|bool|pushTail(x)   |O(1)|
-|bool|pushIndex(i,x)|O(N)|
+|void|pushHead(x)   |O(1)|
+|void|pushTail(x)   |O(1)|
+|void|pushIndex(i,x)|O(N)|
 |**OTHER:**
 |data|search(x)     |O(N)|
-|bool|clear(x)      |O(N)|
+|void|clear(x)      |O(N)|
 |data|size()        |O(1)|
 
 ### Stack
@@ -36,8 +36,8 @@
 
 |náv. hodnota|metoda|složistost
 |-|-|-|
-|bool|push()|O(1)|
+|void|push()|O(1)|
 |data|pop()|O(1)|
 |data|top()|O(1)|
 |bool|isEmpty()|O(1)|
-|bool|clear()|O(N)|
+|void|clear()|O(N)|
