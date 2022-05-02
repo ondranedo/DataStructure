@@ -11,6 +11,8 @@
 
 ## Napsané datové struktury
 
+---
+
 ### LinkedList
 
 -naspaný linked list je psán jako **Doubly linked list**
@@ -30,14 +32,31 @@
 |void|clear(x)      |O(N)|
 |data|size()        |O(1)|
 
+---
+
 ### Stack
 
 -stack je napsnaný s pomocí **LinkeList classy**
 
 |náv. hodnota|metoda|složistost
 |-|-|-|
-|void|push()|O(1)|
+|void|push(x)|O(1)|
 |data|pop()|O(1)|
 |data|top()|O(1)|
 |bool|isEmpty()|O(1)|
 |void|clear()|O(N)|
+
+---
+
+### Queue
+
+-queue je napsnaná s pomocí **LinkeList classy**
+
+|náv. hodnota|metoda|složistost
+|-|-|-|
+|void|enqueue(x)|O(1)|
+|data|dequeue()|O(1)|
+|data|front()|O(1)|
+|bool|back()|O(1)|
+|void|clear()|O(N)|
+|bool|isEmpty()|O(1)|

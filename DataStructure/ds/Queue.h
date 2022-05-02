@@ -13,9 +13,10 @@ namespace ds {
 	public:
 		void enqueue(T data);
 		T dequeue();
-		T front();
-		T back();
+		T front() const;
+		T back() const;
 		void clear();
+		bool isEmpty() const;
 	};
 }
 

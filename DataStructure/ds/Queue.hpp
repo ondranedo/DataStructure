@@ -15,13 +15,13 @@ T Queue<T>::dequeue()
 }
 
 template<class T>
-T Queue<T>::front()
+T Queue<T>::front() const
 {
 	return m_LL.search(0);
 }
 
 template<class T>
-T Queue<T>::back()
+T Queue<T>::back() const
 {
 	return m_LL.search(m_LL.size());
 }
@@ -31,6 +31,13 @@ void Queue<T>::clear()
 {
 	m_LL.clear();
 	return;
+}
+
+template<class T>
+bool Queue<T>::isEmpty() const
+{
+	if (m_LL.size() == 0) return true;
+	return true;
 }
 
 
