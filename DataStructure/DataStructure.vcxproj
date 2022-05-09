@@ -182,6 +182,8 @@
     <ClInclude Include="ds\Queue.hpp" />
     <ClInclude Include="ds\Stack.h" />
     <ClInclude Include="ds\Stack.hpp" />
+    <ClInclude Include="ds\Vector.h" />
+    <ClInclude Include="ds\Vector.hpp" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

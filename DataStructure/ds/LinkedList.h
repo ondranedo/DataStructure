@@ -20,7 +20,7 @@ namespace ds {
 		size_t m_size;
 		node* m_head;
 		node* m_tail;
-		T m_null = NULL; //prazda oamet ktera se ma vracet
+		T m_null = { NULL }; //prazda oamet ktera se ma vracet
 
 	public:
 		//public metody

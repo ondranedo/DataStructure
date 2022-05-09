@@ -52,5 +52,11 @@
     <ClInclude Include="ds\Queue.hpp">
       <Filter>Sources\ds\inicialnizace</Filter>
     </ClInclude>
+    <ClInclude Include="ds\Vector.hpp">
+      <Filter>Sources\ds\inicialnizace</Filter>
+    </ClInclude>
+    <ClInclude Include="ds\Vector.h">
+      <Filter>Sources\ds\deklarace</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
