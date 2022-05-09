@@ -7,16 +7,56 @@
 
 [![](https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C++_Logo.svg)](https://en.wikipedia.org/wiki/C++)
 
+---
+
 ## Napsané datové struktury
 
-### Singly Linked List
+---
 
-![](./github/pic/SinglyLinkedList.png)
+### LinkedList
 
-### Doubly Linked List
+-naspaný linked list je psán jako **Doubly linked list**
 
-![](./github/pic/DoublyLinkedList.png)
+|náv. hodnota|metoda|složistost
+|-|-|-|
+|**POPPING:**
+|data|popHead()     |O(1)|
+|data|popTail()     |O(1)|
+|data|popIndex(i)   |O(N)|
+|**PUSHING:**
+|void|pushHead(x)   |O(1)|
+|void|pushTail(x)   |O(1)|
+|void|pushIndex(i,x)|O(N)|
+|**OTHER:**
+|data|search(x)     |O(N)|
+|void|clear(x)      |O(N)|
+|data|size()        |O(1)|
+
+---
 
 ### Stack
 
-![](./github/pic/Stack.png)
+-stack je napsnaný s pomocí **LinkeList classy**
+
+|náv. hodnota|metoda|složistost
+|-|-|-|
+|void|push(x)|O(1)|
+|data|pop()|O(1)|
+|data|top()|O(1)|
+|bool|isEmpty()|O(1)|
+|void|clear()|O(N)|
+
+---
+
+### Queue
+
+-queue je napsnaná s pomocí **LinkeList classy**
+
+|náv. hodnota|metoda|složistost
+|-|-|-|
+|void|enqueue(x)|O(1)|
+|data|dequeue()|O(1)|
+|data|front()|O(1)|
+|bool|back()|O(1)|
+|void|clear()|O(N)|
+|bool|isEmpty()|O(1)|

@@ -176,9 +176,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="ds\LinkedList.hpp" />
+    <ClInclude Include="ds\LinkedList.h" />
+    <ClInclude Include="ds\Queue.h" />
+    <ClInclude Include="ds\Queue.hpp" />
+    <ClInclude Include="ds\Stack.h" />
+    <ClInclude Include="ds\Stack.hpp" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
