@@ -7,7 +7,7 @@
 
 int main()
 {
-	ds::Queue<char> a;
+	
 
 	system("pause");
 }
